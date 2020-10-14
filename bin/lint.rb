@@ -8,20 +8,47 @@ require_relative '../lib/trailing_space.rb'
 require_relative '../lib/line_length.rb'
 
 class Lint
-  attr_reader :file_to_parse, :parsed_file, :file_object
-
-  def initialize
-    @file_object = File.open(ARGV[0])
-    @file_to_parse = File.open(ARGV[0]).read
-    @parsed_file = Kramdown::Document.new(file_to_parse, input: 'GFM').to_hash_ast
-  end
   include MdLint
+
+  def get_files
+    files = []
+    if ARGV.length.zero?
+      files = Dir.glob("**/*.md")
+      return files
+    end
+    files = ARGV
+  end
+
+  def print_warnings(*args)
+    args.each do |arg|
+      puts arg
+    end
+  end
 end
 
 lint = Lint.new
 header = HeaderRules.new
 trailing_space = TrailingSpace.new
 line_length = LineLength.new
+all_files = lint.get_files
+
+all_files.each do |file|
+  puts ''
+  puts '=================='
+  puts "In file #{file}"
+  puts '=================='
+
+  file_object = File.open(file)
+  parsed_file = Kramdown::Document.new(File.open(file).read, input: 'GFM').to_hash_ast
+  all_headers = lint.all_elements_of_type(:header, parsed_file[:children])
+  misaligned_headers = lint.all_elements_of_type(:p, parsed_file[:children])
+
+  if all_headers.length > 0
+    lint.print_warnings(header.top_level_header(all_headers), header.header_start_left_rule(misaligned_headers))
+  end
+
+  lint.print_warnings(trailing_space.space_after_line(file_object), line_length.line_length(file_object))
+end
 
 # puts '====== Top-level header rule ======'
 # list_of_headers = lint.all_elements_of_type(:header, lint.parsed_file[:children])
@@ -35,5 +62,10 @@ line_length = LineLength.new
 # puts "======= Trailing space ======="
 # p trailing_space.space_after_line(lint.file_object)
 # puts "======= Line length ======="
-puts "======= Line length ======="
-p line_length.line_length(lint.file_object)
+# puts "======= Line length ======="
+# p line_length.line_length(lint.file_object)
+# p lint.get_files
+# def foo (str)
+#   str
+# end
+# lint.print_warnings(foo('hey'), foo('hi'), foo('foo') )

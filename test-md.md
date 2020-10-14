@@ -3,9 +3,9 @@
 
 # Markdown lint tool
 
-A tool to check markdown files and flag style issues.
+A tool to check markdown files and flag style issues.   
 
-## Installation
+  ## Installation
 
 Markdownlint is written in ruby and is distributed as a rubygem. As long as
 you have a relatively up to date ruby on your system, markdownlint will be
