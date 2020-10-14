@@ -19,6 +19,7 @@ class Lint
   def print_warnings(*args)
     args.each do |arg|
       next if arg.length.zero?
+
       arg.each do |warning|
         puts "#{warning[:error_type]} on line #{warning[:line_number]}: #{warning[:error_description]}"
       end
