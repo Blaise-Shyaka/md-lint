@@ -133,6 +133,11 @@ describe 'Lint' do
       expect(warning_hash[:line_number]).to be_an_instance_of Integer
     end
 
+    it 'The line_number with an error should be 7' do
+      warning_hash = line_length.line_length(file_object)[0]
+      expect(warning_hash[:line_number]).to eq(7)
+    end
+
     it 'The error_type key in the warning hash should be a string' do
       warning_hash = line_length.line_length(file_object)[0]
       expect(warning_hash[:error_type]).to be_an_instance_of String
