@@ -6,7 +6,7 @@ class LineLength
       warning = {
         error_type: 'Line-length',
         error_description: 'Line is too long',
-        line_number: $.
+        line_number: $INPUT_LINE_NUMBER
       }
       warnings << warning if line.length > 80
     end
