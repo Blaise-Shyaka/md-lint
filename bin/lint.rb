@@ -4,11 +4,13 @@ require 'kramdown'
 require 'kramdown-parser-gfm'
 require_relative '../lib/md_lint.rb'
 require_relative '../lib/header_rules.rb'
+require_relative '../lib/trailing_space.rb'
 
 class Lint
-  attr_reader :file_to_parse, :parsed_file
+  attr_reader :file_to_parse, :parsed_file, :file_object
 
   def initialize
+    @file_object = File.open(ARGV[0])
     @file_to_parse = File.open(ARGV[0]).read
     @parsed_file = Kramdown::Document.new(file_to_parse, input: 'GFM').to_hash_ast
   end
@@ -17,6 +19,7 @@ end
 
 lint = Lint.new
 header = HeaderRules.new
+trailing_space = TrailingSpace.new
 
 # puts '====== Top-level header rule ======'
 # list_of_headers = lint.all_elements_of_type(:header, lint.parsed_file[:children])
@@ -27,3 +30,5 @@ header = HeaderRules.new
 # puts lint.parsed_file[:children][2]
 # list_of_spaced_headers = lint.all_elements_of_type(:p, lint.parsed_file[:children])
 # puts header.header_start_left_rule(list_of_spaced_headers)
+# puts "======= Trailing space ======="
+# p trailing_space.space_after_line(lint.file_object)
