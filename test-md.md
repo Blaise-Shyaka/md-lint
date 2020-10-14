@@ -4,7 +4,7 @@ Lorem lorem lorem lorem lorem
 
   ## Installation
 
-Lorem is written in ruby and is distributed as a rubygem. As long as
+Lorem is written in ruby and is distributed as a rubygem. As long as Lorem is written in ruby and is distributdjdkhfalkdhfdfahdkfhkdhhkalfhlakhflsdkhfalfhakldfh rubygem. As long as
 you have a relatively up to date ruby on your system, Lorem will be
 simple to install and use. You have 2 options to install it:
 

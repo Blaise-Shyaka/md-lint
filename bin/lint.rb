@@ -48,7 +48,7 @@ all_files.each do |file|
     lint.print_warnings(header.top_level_header(all_headers), header.header_start_left_rule(misaligned_headers))
   end
 
-  lint.print_warnings(trailing_space.space_after_line(file_object), line_length.line_length(file_object))
+  lint.print_warnings(trailing_space.space_after_line(file_object), line_length.line_length(File.readlines(file)))
 end
 
 # puts '====== Top-level header rule ======'

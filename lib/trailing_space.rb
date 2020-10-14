@@ -1,3 +1,5 @@
+require 'English'
+
 class TrailingSpace
   def space_after_line(file_object)
     warnings = []
