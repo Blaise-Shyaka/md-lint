@@ -1,7 +1,7 @@
 [![Continuous Integration](https://github.com/markdownlint/markdownlint/workflows/Continuous%20Integration/badge.svg)](https://github.com/markdownlint/markdownlint/actions?query=workflow%3A%22Continuous+Integration%22)
 [![Gem Version](https://badge.fury.io/rb/mdl.svg)](http://badge.fury.io/rb/mdl)
 
-  # Markdown lint tool
+# Markdown lint tool
 
 A tool to check markdown files and flag style issues.
 
@@ -11,9 +11,9 @@ Markdownlint is written in ruby and is distributed as a rubygem. As long as
 you have a relatively up to date ruby on your system, markdownlint will be
 simple to install and use. You have 2 options to install it:
 
-### Hey
+ ### Hey
 #### Hi
-## Whatsup
+ ## Whatsup
 
 To install from rubygems, run:
 

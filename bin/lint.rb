@@ -23,5 +23,7 @@ header = HeaderRules.new
 # puts lint.parsed_file[:children]
 # puts list_of_headers
 # puts header.top_level_header(list_of_headers)
-puts '====== Header-start-left header rule ======'
-puts lint.parsed_file[:children][2]
+# puts '====== Header-start-left header rule ======'
+# puts lint.parsed_file[:children][2]
+# list_of_spaced_headers = lint.all_elements_of_type(:p, lint.parsed_file[:children])
+# puts header.header_start_left_rule(list_of_spaced_headers)
