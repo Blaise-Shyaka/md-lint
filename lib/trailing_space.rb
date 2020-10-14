@@ -4,7 +4,7 @@ class TrailingSpace
     file_object.each do |line|
       warning = {
         error_type: 'No-trailing-spaces',
-        error_description: 'No trailing space at the end of line',
+        error_description: 'There should be no trailing space at the end of line',
         line_number: $.
       }
       warnings << warning if line[-2] == ' '
