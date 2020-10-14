@@ -114,7 +114,7 @@ describe 'Lint' do
   describe 'Line-length rule' do
     let(:line_length) { LineLength.new }
     let(:file_object) { File.readlines(test_file) }
-    
+
     it 'Should return an array' do
       expect(line_length.line_length(file_object)).to be_an_instance_of Array
     end
