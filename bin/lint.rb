@@ -5,6 +5,7 @@ require 'kramdown-parser-gfm'
 require_relative '../lib/md_lint.rb'
 require_relative '../lib/header_rules.rb'
 require_relative '../lib/trailing_space.rb'
+require_relative '../lib/line_length.rb'
 
 class Lint
   attr_reader :file_to_parse, :parsed_file, :file_object
@@ -20,6 +21,7 @@ end
 lint = Lint.new
 header = HeaderRules.new
 trailing_space = TrailingSpace.new
+line_length = LineLength.new
 
 # puts '====== Top-level header rule ======'
 # list_of_headers = lint.all_elements_of_type(:header, lint.parsed_file[:children])
@@ -32,3 +34,6 @@ trailing_space = TrailingSpace.new
 # puts header.header_start_left_rule(list_of_spaced_headers)
 # puts "======= Trailing space ======="
 # p trailing_space.space_after_line(lint.file_object)
+# puts "======= Line length ======="
+puts "======= Line length ======="
+p line_length.line_length(lint.file_object)
