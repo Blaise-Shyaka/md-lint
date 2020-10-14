@@ -5,7 +5,7 @@ class TrailingSpace
       warning = {
         error_type: 'No-trailing-spaces',
         error_description: 'There should be no trailing space at the end of line',
-        line_number: $.
+        line_number: $INPUT_LINE_NUMBER
       }
       warnings << warning if line[-2] == ' '
     end
