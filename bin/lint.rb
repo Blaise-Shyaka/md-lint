@@ -10,21 +10,17 @@ require_relative '../lib/line_length.rb'
 class Lint
   include MdLint
 
-  def get_files
-    files = []
-    if ARGV.length.zero?
-      files = Dir.glob("**/*.md")
-      return files
-    end
-    files = ARGV
+  def files_to_lint
+    return Dir.glob('**/*.md') if ARGV.length.zero?
+
+    ARGV
   end
 
   def print_warnings(*args)
     args.each do |arg|
-      if arg.length > 0
-        arg.each do |warning|
-          puts "#{warning[:error_type]} on line #{warning[:line_number]}: #{warning[:error_description]}"
-        end
+      next if arg.length.zero?
+      arg.each do |warning|
+        puts "#{warning[:error_type]} on line #{warning[:line_number]}: #{warning[:error_description]}"
       end
     end
   end
@@ -34,7 +30,7 @@ lint = Lint.new
 header = HeaderRules.new
 trailing_space = TrailingSpace.new
 line_length = LineLength.new
-all_files = lint.get_files
+all_files = lint.files_to_lint
 
 all_files.each do |file|
   puts ''
@@ -47,7 +43,7 @@ all_files.each do |file|
   all_headers = lint.all_elements_of_type(:header, parsed_file[:children])
   misaligned_headers = lint.all_elements_of_type(:p, parsed_file[:children])
 
-  if all_headers.length > 0
+  if all_headers.length.positive?
     lint.print_warnings(header.top_level_header(all_headers), header.header_start_left_rule(misaligned_headers))
   end
 
