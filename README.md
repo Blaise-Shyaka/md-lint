@@ -37,7 +37,7 @@ To use this linter, please check the requirements and follow the steps listed be
 ### Running tests
 
 - In the command line, run `pwd` and make sure the current directory is `md-lint`
-- Run `rspec` command and all tests results will be output in command line
+- Run `rspec` command and all tests results will be output in the command line
 
 ## Author
 
