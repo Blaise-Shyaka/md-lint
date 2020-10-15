@@ -50,23 +50,3 @@ all_files.each do |file|
 
   lint.print_warnings(trailing_space.space_after_line(file_object), line_length.line_length(File.readlines(file)))
 end
-
-# puts '====== Top-level header rule ======'
-# list_of_headers = lint.all_elements_of_type(:header, lint.parsed_file[:children])
-# puts lint.parsed_file[:children]
-# puts list_of_headers
-# puts header.top_level_header(list_of_headers)
-# puts '====== Header-start-left header rule ======'
-# puts lint.parsed_file[:children][2]
-# list_of_spaced_headers = lint.all_elements_of_type(:p, lint.parsed_file[:children])
-# puts header.header_start_left_rule(list_of_spaced_headers)
-# puts "======= Trailing space ======="
-# p trailing_space.space_after_line(lint.file_object)
-# puts "======= Line length ======="
-# puts "======= Line length ======="
-# p line_length.line_length(lint.file_object)
-# p lint.get_files
-# def foo (str)
-#   str
-# end
-# lint.print_warnings(foo('hey'), foo('hi'), foo('foo') )
