@@ -2,6 +2,8 @@
 
 Md-lint is a linter for files written in a markdown format. The rules enforced by this linter are based on the standards of many other linters. Unlike other linters however, it does not support a config file to customize the rules.
 
+![Linter screenshot](./product_screenshot.png)
+
 ## Built With
 
 - Ruby
@@ -23,9 +25,19 @@ To use this linter, please check the requirements and follow the steps listed be
 
 ### How to use the linter
 
-- In the command line, `cd bin`.
-- To lint all the files markdown in the directory, run `./lint.rb`
-- To lint a file individually, run `./lint.rb <filename>`
+- To lint all the files markdown in the directory, run `./bin/main.rb`
+- To lint a file individually, run `./bin/main.rb <filename>`
+
+## How to run the tests
+
+### Prerequisites
+
+- rspec >= 3.9.x
+
+### Running tests
+
+- In the command line, run `pwd` and make sure the current directory is `md-lint`
+- Run `rspec` command and all tests results will be output in command line
 
 ## Author
 
