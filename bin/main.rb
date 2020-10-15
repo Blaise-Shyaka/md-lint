@@ -2,30 +2,10 @@
 
 require 'kramdown'
 require 'kramdown-parser-gfm'
-require_relative '../lib/md_lint.rb'
+require_relative '../lib/lint.rb'
 require_relative '../lib/header_rules.rb'
 require_relative '../lib/trailing_space.rb'
 require_relative '../lib/line_length.rb'
-
-class Lint
-  include MdLint
-
-  def files_to_lint
-    return Dir.glob('**/*.md') if ARGV.length.zero?
-
-    ARGV
-  end
-
-  def print_warnings(*args)
-    args.each do |arg|
-      next if arg.length.zero?
-
-      arg.each do |warning|
-        puts "#{warning[:error_type]} on line #{warning[:line_number]}: #{warning[:error_description]}"
-      end
-    end
-  end
-end
 
 lint = Lint.new
 header = HeaderRules.new

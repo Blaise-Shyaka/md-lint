@@ -1,6 +1,6 @@
 ## Test header title
 
-Lorem lorem lorem lorem lorem   
+Lorem lorem lorem lorem lorem     
 
   ## Installation
 
